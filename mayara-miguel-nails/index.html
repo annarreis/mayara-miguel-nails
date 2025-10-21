@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mayara Miguel | Nail Designer</title>
+
+    <!-- Fonte Poppins --><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS --><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome Icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .navbar {
+            background-color: #000; /* Preto */
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        .btn-pink {
+            background-color: #ff4da6;
+            color: white;
+            border: none;
+        }
+        .btn-pink:hover {
+            background-color: #e04392;
+            color: white;
+        }
+        .hero {
+            background: linear-gradient(135deg, #000 40%, #ff4da6 100%);
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+        .section-title {
+            font-weight: 700;
+            color: #ff4da6;
+        }
+        .service-card {
+            border: 1px solid #f1f1f1;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            height: 100%; /* Garante que os cards na mesma linha tenham a mesma altura */
+            display: flex;
+            flex-direction: column;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        .service-card h5 {
+            min-height: 48px; /* Ajuste para títulos de duas linhas */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .service-card p {
+            flex-grow: 1;
+        }
+        .price {
+            font-weight: 600;
+            color: #333;
+            font-size: 1.1rem;
+        }
+        .portfolio-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            height: 220px; /* Mantém a altura dos placeholders */
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+            display: block;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+            filter: brightness(0.8);
+            cursor: pointer;
+        }
+        footer {
+            background-color: #000;
+            color: white;
+            padding: 20px 0;
+        }
+        #contato a {
+            text-decoration: none;
+            color: #333;
+        }
+        #contato a:hover {
+            color: #ff4da6;
+        }
+
+        /* Estilos do Modal (Lightbox) */
+        .modal {
+          display: none; 
+          position: fixed; 
+          z-index: 1000; 
+          padding-top: 60px; 
+          left: 0;
+          top: 0;
+          width: 100%; 
+          height: 100%; 
+          overflow: auto; 
+          background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+          margin: auto;
+          display: block;
+          width: 80%;
+          max-width: 700px;
+          animation-name: zoom;
+          animation-duration: 0.6s;
+        }
+
+        @keyframes zoom {
+          from {transform:scale(0)}
+          to {transform:scale(1)}
+        }
+
+        .close {
+          position: absolute;
+          top: 15px;
+          right: 35px;
+          color: #f1f1f1;
+          font-size: 40px;
+          font-weight: bold;
+          transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+          color: #bbb;
+          text-decoration: none;
+          cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar --><nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Mayara Miguel</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="background-color: #ff4da6;">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicos">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfólio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#agenda">Agenda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section --><header class="hero">
+        <div class="container">
+            <h1>Mãos poderosas, merecem unhas incríveis!</h1>
+            <p>Transformando suas mãos com arte e cuidado. </p>
+            <a href="#agenda" class="btn btn-pink mt-3 px-4 py-2">Agende seu horário</a>
+        </div>
+    </header>
+
+    <!-- Serviços --><section id="servicos" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Meus Serviços</h2>
+            <div class="row text-center g-4">
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="service-card">
+                        <i class="fa-solid fa-hand-sparkles fa-2x mb-3" style="color:#ff4da6;"></i>
+                        <h5>Fibra de Vidro</h5>
+                        <p>Inclui cutilagem e esmaltação (comum ou em gel).</p>
+                        <p class="price">R$ 120,00</p>
+                    </div>
+                </div>
+                 <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="service-card">
+                        <i class="fa-solid fa-fill-drip fa-2x mb-3" style="color:#ff4da6;"></i>
+                        <h5>Banho de Gel</h5>
+                        <p>Uma camada de gel sobre as unhas naturais para maior resistência.</p>
+                        <p class="price">R$ 70,00</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="service-card">
+                        <i class="fa-solid fa-shield-halved fa-2x mb-3" style="color:#ff4da6;"></i>
+                        <h5>Blindagem</h5>
+                        <p>Proteção e fortalecimento para suas unhas naturais.</p>
+                        <p class="price">R$ 45,00</p>
+                    </div>
+                </div>
+                 <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="service-card">
+                        <i class="fa-solid fa-hand fa-2x mb-3" style="color:#ff4da6;"></i>
+                        <h5>Manicure</h5>
+                        <p>Cutilagem e esmaltação comum para mãos impecáveis.</p>
+                        <p class="price">R$ 28,00</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="service-card">
+                        <i class="fa-solid fa-shoe-prints fa-2x mb-3" style="color:#ff4da6;"></i>
+                        <h5>Pedicure</h5>
+                        <p>Cutilagem e esmaltação para pés sempre lindos.</p>
+                        <p class="price">R$ 30,00</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="service-card">
+                        <i class="fa-solid fa-water fa-2x mb-3" style="color:#ff4da6;"></i>
+                        <h5>Banho de Gel - Pés</h5>
+                        <p>Esmaltação em gel nos pés para maior durabilidade e brilho.</p>
+                        <p class="price">R$ 70,00</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="service-card">
+                        <i class="fa-solid fa-spa fa-2x mb-3" style="color:#ff4da6;"></i>
+                        <h5>Spa dos Pés</h5>
+                        <p>Uma experiência única para o cuidado e relaxamento dos seus pés.</p>
+                        <p class="price">R$ 100,00</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="service-card">
+                        <i class="fa-solid fa-gem fa-2x mb-3" style="color:#ff4da6;"></i>
+                        <h5>Decorações</h5>
+                        <p>Desenho livre, pedrarias, francesinha e mais.</p>
+                        <p class="price">A partir de R$ 10,00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfólio --><section id="portfolio" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Portfólio</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="portfolio-item">
+                        <img src="unha1.jpeg" alt="Exemplo de unha decorada 1" onclick="openModal(this);">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-item">
+                        <img src="unha2.jpeg" alt="Exemplo de unha decorada 2" onclick="openModal(this);">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-item">
+                        <img src="unha3.jpeg" alt="Exemplo de unha decorada 3" onclick="openModal(this);">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-item">
+                        <img src="unha4.jpeg" alt="Exemplo de unha decorada 4" onclick="openModal(this);">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-item">
+                        <img src="unha5.jpeg" alt="Exemplo de unha decorada 5" onclick="openModal(this);">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-item">
+                        <img src="unha6.jpeg" alt="Exemplo de unha decorada 6" onclick="openModal(this);">
+                    </div>
+                </div>
+            </div>
+             <div class="text-center mt-4">
+                <a href="https://www.instagram.com/mayramnails_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="btn btn-pink">Ver mais no Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agenda --><section id="agenda" class="py-5">
+        <div class="container text-center">
+            <h2 class="section-title mb-4">Agenda</h2>
+            <p>Veja os horários disponíveis e agende seu atendimento com facilidade.</p>
+            <a href="https://calendar.app.google/GoK8op4ky3CUs1bv5" target="_blank" class="btn btn-pink mt-3 px-4 py-2">
+                <i class="fa-regular fa-calendar-check me-2"></i> Ver horários e agendar
+            </a>
+        </div>
+    </section>
+
+    <!-- Contato --><section id="contato" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-4">Contato</h2>
+            <div class="row mt-5">
+                <div class="col-md-4 text-center mb-4 mb-md-0">
+                    <i class="fa-brands fa-whatsapp fa-2x mb-3 text-success"></i>
+                    <h5>WhatsApp</h5>
+                    <a href="https://wa.me/5511932153733" target="_blank">11 93215-3733</a>
+                </div>
+                <div class="col-md-4 text-center mb-4 mb-md-0">
+                    <i class="fa-brands fa-instagram fa-2x mb-3" style="color:#ff4da6;"></i>
+                    <h5>Instagram</h5>
+                    <a href="https://www.instagram.com/mayramnails_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+                        @mayramnails_
+                    </a>
+                </div>
+                <div class="col-md-4 text-center">
+                    <i class="fa-solid fa-location-dot fa-2x mb-3" style="color:#ff4da6;"></i>
+                    <h5>Endereço</h5>
+                    <p class="mb-0">
+                        Av. Alexandre Mackenzie, nº 357<br />
+                        Torre 04 | Apto 716<br />
+                        (À primeira esquerda saindo do elevador)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal (Lightbox) -->
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="img01">
+    </div>
+
+    <!-- Rodapé --><footer>
+        <div class="container text-center">
+            <p class="mb-0">© <span id="year"></span> Mayara Miguel | Nail Designer. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+    <!-- Bootstrap JS --><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script para o Modal -->
+    <script>
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("img01");
+
+        function openModal(element) {
+          modal.style.display = "block";
+          modalImg.src = element.src;
+        }
+
+        var span = document.getElementsByClassName("close")[0];
+
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+        
+        modal.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
+
